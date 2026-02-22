@@ -1,10 +1,10 @@
 const CACHE_NAME = 'anatomy-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/manifest.json'
+  '/anatomy-schedule/',
+  '/anatomy-schedule/index.html',
+  '/anatomy-schedule/icon-192.png',
+  '/anatomy-schedule/icon-512.png',
+  '/anatomy-schedule/manifest.json'
 ];
 
 self.addEventListener('install', e => {
