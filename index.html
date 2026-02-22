@@ -44,7 +44,12 @@
         .week-slide {
             width: calc(100% / 7);
             flex-shrink: 0;
-            padding: var(--sp-md) var(--sp-md) 140px var(--sp-md);
+            padding: var(--sp-md) var(--sp-md) 5rem var(--sp-md);
+            box-sizing: border-box;
+            height: calc(var(--vh, 1vh) * 100 - 80px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
         .space-y-4 > * + * { margin-top: var(--sp-md); }
 
@@ -153,7 +158,7 @@
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="解剖課表">
+    <meta name="apple-mobile-web-app-title" content="Kevin HBD">
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta name="theme-color" content="#2563eb">
 </head>
@@ -180,14 +185,13 @@
     </div>
 </header>
 
-<main>
+<main style="overflow:hidden;">
 <div style="overflow:hidden;">
 <div id="swipeContainer">
 
 <!-- 第 1 週 -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">2/23 - 2/27</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-1">
         <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/23 (一) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
         <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum I</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
@@ -223,7 +227,6 @@
 <!-- 第 2 週 -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/02 - 3/06</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-1">
         <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/02 (一) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
         <h3 class="course-name font-bold text-slate-800">Cranial nerves & Nuclei</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
@@ -259,7 +262,6 @@
 <!-- 第 3 週 -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/09 - 3/13</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-1">
         <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/09 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
         <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 3</h3>
@@ -280,12 +282,20 @@
         <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 4</h3>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
+
+    <!-- Kevin 生日 🎂 -->
+    <div class="bg-gradient-to-br from-pink-50 to-yellow-50 rounded-3xl border border-pink-100 shadow-sm overflow-hidden">
+        <img src="https://i.pinimg.com/originals/cc/c9/22/ccc92227ab416fce0cf9260e377b5d05.jpg" alt="Kevin 生日快樂" style="width:100%; display:block; border-radius: var(--r-card) var(--r-card) 0 0; height: clamp(180px, 40vw, 360px); object-fit: contain; object-position: center; background: #fff8f0;">
+        <div style="padding: var(--sp-md); text-align:center;">
+            <p style="font-size: var(--fs-lg); font-weight: 900; color: #db2777;">🎂 3/13 Kevin 生日快樂！</p>
+            <p style="font-size: var(--fs-sm); color: #9d174d; margin-top: 4px;">記得祝他生日快樂 🎉</p>
+        </div>
+    </div>
 </div>
 
 <!-- 第 4 週 (考週) -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🔥</span><h2 class="week-title-text font-black text-red-600">3/16 - 3/20 考週</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-1">
         <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/16 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
         <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 5</h3>
@@ -329,15 +339,19 @@
         <h3 class="course-name font-bold text-slate-800">皮膚切割</h3>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
+    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-7">
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/20 (五) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 1</h3>
+        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+    </div>
 </div>
 
 <!-- 第 5 週 -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/23 - 3/27</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/23 (一) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">廖智凱 老師 1</h3>
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/23 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 2</h3>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-2">
@@ -346,23 +360,23 @@
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/24 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">廖智凱 老師 2</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-4">
         <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/25 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
         <h3 class="course-name font-bold text-slate-800">Cerebral cortex & White matter</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-5">
+    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-4">
         <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/25 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
         <h3 class="course-name font-bold text-slate-800">Limbic system & High cortical function</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
+    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-5">
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/25 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 3</h3>
+        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+    </div>
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-6">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/27 (五) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">廖智凱 老師 3</h3>
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/26 (四) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 4</h3>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
 </div>
@@ -370,15 +384,14 @@
 <!-- 第 6 週 (考週) -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🔥</span><h2 class="week-title-text font-black text-red-600">3/30 - 4/03 考週</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/31 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">中樞神經系統醫學影像學</h3><p class="teacher-name text-slate-500 mt-1">沈昭諭 老師</p>
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/30 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 5</h3>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/31 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">廖智凱 老師 4</h3>
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/31 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+        <h3 class="course-name font-bold text-slate-800">中樞神經系統醫學影像學</h3><p class="teacher-name text-slate-500 mt-1">沈昭諭 老師</p>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
     <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-3">
@@ -388,20 +401,19 @@
         <p class="exam-time text-red-600 mt-1 font-bold">4/01 (三) 03-04 節</p>
         <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
     </div>
+    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-3">
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/01 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 6</h3>
+        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+    </div>
 </div>
 
 <!-- 第 7 週 (結業週) -->
 <div class="week-slide space-y-4">
     <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🏁</span><h2 class="week-title-text font-black text-slate-700">4/06 - 4/10 結業週</h2></div>
-
     <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w7-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/07 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">廖智凱 老師 5</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w7-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/09 (四) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">廖智凱 老師 6</h3>
+        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/08 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 7</h3>
         <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
     </div>
     <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-4">
@@ -411,7 +423,6 @@
         <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
     </div>
 </div>
-
 </div>
 </div>
 </main>
@@ -423,13 +434,13 @@
             <div class="w-10 h-1 bg-slate-200 rounded-full"></div>
         </div>
         <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 8px;">
-            <button onclick="goToWeek(0,event)" data-week="0" class="tab-btn pill-btn bg-blue-600 text-white shadow-lg">W1</button>
-            <button onclick="goToWeek(1,event)" data-week="1" class="tab-btn pill-btn bg-slate-100 text-slate-500">W2</button>
-            <button onclick="goToWeek(2,event)" data-week="2" class="tab-btn pill-btn bg-slate-100 text-slate-500">W3</button>
-            <button onclick="goToWeek(3,event)" data-week="3" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W4</button>
-            <button onclick="goToWeek(4,event)" data-week="4" class="tab-btn pill-btn bg-slate-100 text-slate-500">W5</button>
-            <button onclick="goToWeek(5,event)" data-week="5" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W6</button>
-            <button onclick="goToWeek(6,event)" data-week="6" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W7</button>
+            <button onclick="goToWeek(0,true,event)" data-week="0" class="tab-btn pill-btn bg-blue-600 text-white shadow-lg">W1</button>
+            <button onclick="goToWeek(1,true,event)" data-week="1" class="tab-btn pill-btn bg-slate-100 text-slate-500">W2</button>
+            <button onclick="goToWeek(2,true,event)" data-week="2" class="tab-btn pill-btn bg-slate-100 text-slate-500">W3</button>
+            <button onclick="goToWeek(3,true,event)" data-week="3" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W4</button>
+            <button onclick="goToWeek(4,true,event)" data-week="4" class="tab-btn pill-btn bg-slate-100 text-slate-500">W5</button>
+            <button onclick="goToWeek(5,true,event)" data-week="5" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W6</button>
+            <button onclick="goToWeek(6,true,event)" data-week="6" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W7</button>
         </div>
     </div>
 </nav>
@@ -454,6 +465,13 @@
     const swipeContainer = document.getElementById('swipeContainer');
     let currentWeek = 0;
 
+    // iOS standalone vh fix
+    function setVh() {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+
     window.onload = () => { renderAllMoodSelectors(); loadMoods(); initSwipe(); };
 
     function renderAllMoodSelectors() {
@@ -473,46 +491,51 @@
     function initSwipe() {
         const main = document.querySelector('main');
         let touchStartX = 0, touchStartY = 0, dragX = 0;
-        let swipeDirection = null; // 'h' = horizontal, 'v' = vertical
+        let swipeDirection = null;
 
-        main.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-            dragX = 0;
-            swipeDirection = null;
-            swipeContainer.style.transition = 'none';
-        }, { passive: true });
+        // Attach touch to each slide so vertical scroll works naturally per slide
+        function attachSlideSwipe(slide) {
+            slide.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                dragX = 0;
+                swipeDirection = null;
+                swipeContainer.style.transition = 'none';
+            }, { passive: true });
 
-        main.addEventListener('touchmove', (e) => {
-            const dx = e.touches[0].clientX - touchStartX;
-            const dy = e.touches[0].clientY - touchStartY;
+            slide.addEventListener('touchmove', (e) => {
+                const dx = e.touches[0].clientX - touchStartX;
+                const dy = e.touches[0].clientY - touchStartY;
 
-            // Determine direction on first significant move
-            if (!swipeDirection && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
-                swipeDirection = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
-            }
+                if (!swipeDirection && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+                    swipeDirection = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+                }
 
-            if (swipeDirection === 'h') {
-                e.preventDefault(); // lock vertical scroll
-                dragX = dx;
-                const base = -currentWeek * (100 / 7);
-                swipeContainer.style.transform = `translateX(calc(${base}% + ${dx}px))`;
-            }
-        }, { passive: false });
+                if (swipeDirection === 'h') {
+                    e.preventDefault();
+                    dragX = dx;
+                    const base = -currentWeek * (100 / 7);
+                    swipeContainer.style.transform = `translateX(calc(${base}% + ${dx}px))`;
+                }
+                // if 'v', do nothing - let the slide's own overflow-y scroll naturally
+            }, { passive: false });
 
-        main.addEventListener('touchend', () => {
-            swipeContainer.style.transition = '';
-            if (swipeDirection === 'h') {
-                const threshold = window.innerWidth * 0.25;
-                if (dragX < -threshold && currentWeek < 6) goToWeek(currentWeek + 1);
-                else if (dragX > threshold && currentWeek > 0) goToWeek(currentWeek - 1);
-                else goToWeek(currentWeek);
-            }
-            dragX = 0;
-            swipeDirection = null;
-        }, { passive: true });
+            slide.addEventListener('touchend', () => {
+                swipeContainer.style.transition = '';
+                if (swipeDirection === 'h') {
+                    const threshold = window.innerWidth * 0.25;
+                    if (dragX < -threshold && currentWeek < 6) goToWeek(currentWeek + 1, true);
+                    else if (dragX > threshold && currentWeek > 0) goToWeek(currentWeek - 1, true);
+                    else goToWeek(currentWeek, false);
+                }
+                dragX = 0;
+                swipeDirection = null;
+            }, { passive: true });
+        }
 
-        // Desktop mouse swipe
+        document.querySelectorAll('.week-slide').forEach(attachSlideSwipe);
+
+        // Desktop mouse swipe on main
         let mouseStartX = 0, mouseDown = false, wasDragging = false;
         main.addEventListener('mousedown', (e) => { mouseStartX = e.clientX; mouseDown = true; wasDragging = false; swipeContainer.style.transition = 'none'; });
         main.addEventListener('mousemove', (e) => {
@@ -528,15 +551,15 @@
             swipeContainer.style.transition = '';
             const dx = e.clientX - mouseStartX;
             const threshold = window.innerWidth * 0.15;
-            if (dx < -threshold && currentWeek < 6) goToWeek(currentWeek + 1);
-            else if (dx > threshold && currentWeek > 0) goToWeek(currentWeek - 1);
-            else goToWeek(currentWeek);
+            if (dx < -threshold && currentWeek < 6) goToWeek(currentWeek + 1, true);
+            else if (dx > threshold && currentWeek > 0) goToWeek(currentWeek - 1, true);
+            else goToWeek(currentWeek, false);
         });
-        main.addEventListener('mouseleave', () => { if (mouseDown) { mouseDown = false; swipeContainer.style.transition = ''; goToWeek(currentWeek); } });
+        main.addEventListener('mouseleave', () => { if (mouseDown) { mouseDown = false; swipeContainer.style.transition = ''; goToWeek(currentWeek, false); } });
         main.addEventListener('click', (e) => { if (wasDragging) { e.stopPropagation(); wasDragging = false; } });
     }
 
-    function goToWeek(idx, e) {
+    function goToWeek(idx, scrollToTop = true, e) {
         if (e) e.stopPropagation();
         currentWeek = idx;
 
@@ -562,7 +585,10 @@
             }
         });
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (scrollToTop) {
+            const activeSlide = document.querySelectorAll('.week-slide')[idx];
+            if (activeSlide) activeSlide.scrollTop = 0;
+        }
         nav.classList.remove('show');
     }
 
