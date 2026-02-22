@@ -9,22 +9,17 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
 
         :root {
-            /* 流動字體：手機~平板自動縮放 */
             --fs-xs:   clamp(10px, 1.6vw, 14px);
             --fs-sm:   clamp(12px, 1.9vw, 16px);
             --fs-base: clamp(14px, 2.2vw, 19px);
             --fs-lg:   clamp(16px, 2.6vw, 22px);
             --fs-xl:   clamp(18px, 3vw,   26px);
             --fs-2xl:  clamp(20px, 3.5vw, 30px);
-            /* 間距 */
             --sp-sm:   clamp(8px,  1.5vw, 14px);
             --sp-md:   clamp(14px, 2.5vw, 24px);
             --sp-lg:   clamp(18px, 3vw,   32px);
-            /* 圓角 */
             --r-card:  clamp(18px, 3vw, 28px);
-            /* mood icon */
             --mood-img: clamp(36px, 6vw, 60px);
-            /* nav pill */
             --pill-fs: clamp(11px, 1.8vw, 15px);
         }
 
@@ -32,46 +27,47 @@
             font-family: 'Noto Sans TC', sans-serif;
             -webkit-tap-highlight-color: transparent;
             background-color: #f8fafc;
-            overflow-x: hidden;
+            overflow: hidden;
             font-size: var(--fs-base);
+            height: 100dvh;
         }
+
         #swipeContainer {
             display: flex;
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform;
             width: 700%;
+            height: 100%;
         }
+
         .week-slide {
             width: calc(100% / 7);
             flex-shrink: 0;
             padding: var(--sp-md) var(--sp-md) 5rem var(--sp-md);
             box-sizing: border-box;
-            height: calc(var(--vh, 1vh) * 100 - 80px);
+            height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
         }
+
         .space-y-4 > * + * { margin-top: var(--sp-md); }
 
-        /* Header */
         header h1  { font-size: var(--fs-xl); }
         header p   { font-size: var(--fs-xs); }
         #currentWeekBadge { font-size: var(--fs-xs); }
 
-        /* Week title */
         .week-title-emoji { font-size: var(--fs-lg); }
         .week-title-text  { font-size: var(--fs-lg); }
 
-        /* Course cards */
         .course-card {
             padding: var(--sp-md);
             border-radius: var(--r-card);
         }
-        .course-card .date-label { font-size: var(--fs-xs); }
+        .course-card .date-label  { font-size: var(--fs-xs); }
         .course-card .course-name { font-size: var(--fs-base); }
-        .course-card .teacher-name { font-size: var(--fs-xs); }
+        .course-card .teacher-name{ font-size: var(--fs-xs); }
 
-        /* Exam cards */
         .exam-card { padding: var(--sp-lg); border-radius: var(--r-card); }
         .exam-card .exam-title { font-size: var(--fs-xl); }
         .exam-card .exam-sub   { font-size: var(--fs-xs); }
@@ -158,13 +154,13 @@
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Kevin HBD">
+    <meta name="apple-mobile-web-app-title" content="解剖課表">
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta name="theme-color" content="#2563eb">
 </head>
-<body class="text-slate-900">
+<body class="text-slate-900 flex flex-col">
 
-<header class="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-100" style="padding: var(--sp-sm) var(--sp-md);">
+<header class="flex-none sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-100" style="padding: var(--sp-sm) var(--sp-md);">
     <div class="max-w-2xl mx-auto">
         <div class="flex justify-between items-center">
             <div>
@@ -185,246 +181,240 @@
     </div>
 </header>
 
-<main style="overflow:hidden;">
-<div style="overflow:hidden;">
-<div id="swipeContainer">
+<main class="flex-1 overflow-hidden">
+    <div style="overflow:hidden; height:100%;">
+        <div id="swipeContainer">
 
-<!-- 第 1 週 -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">2/23 - 2/27</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/23 (一) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum I</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">2/23 (一) 05-06 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">實驗課講解</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/23 (一) 07-08 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">耳鼻喉頭頸解剖學</h3><p class="teacher-name text-slate-500 mt-1">黃承楨 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-4">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">2/24 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">皮膚切割</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-5">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/25 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Spinal cord ascending tract & Sensory tract</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-6">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/25 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Spinal cord descending tract & Motor tract</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-</div>
+            <!-- 第 1 週 -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">2/23 - 2/27</h2></div>
 
-<!-- 第 2 週 -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/02 - 3/06</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/02 (一) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Cranial nerves & Nuclei</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/02 (一) 03-午 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 1</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/03 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum II</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-4">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/04 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum III</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-5">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/05 (四) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">離體心臟解剖與臨床結構性心臟疾病的相關性</h3><p class="teacher-name text-slate-500 mt-1">蘇峻弘 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-6">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/05 (四) 03-午 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 2</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-</div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/23 (一) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum I</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">2/23 (一) 05-06 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">實驗課講解</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-3">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/23 (一) 07-08 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">耳鼻喉頭頸解剖學</h3><p class="teacher-name text-slate-500 mt-1">黃承楨 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-4">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">2/24 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">皮膚切割</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-5">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/25 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Spinal cord ascending tract & Sensory tract</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w1-6">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">2/25 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Spinal cord descending tract & Motor tract</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+            </div>
 
-<!-- 第 3 週 -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/09 - 3/13</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/09 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 3</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/11 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Brainstem & Reticular formation</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/11 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Diencephalon & Thalamus</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-4">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/12 (四) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 4</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
+            <!-- 第 2 週 -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/02 - 3/06</h2></div>
 
-    <!-- Kevin 生日 🎂 -->
-    <div class="bg-gradient-to-br from-pink-50 to-yellow-50 rounded-3xl border border-pink-100 shadow-sm overflow-hidden">
-        <img src="https://i.pinimg.com/originals/cc/c9/22/ccc92227ab416fce0cf9260e377b5d05.jpg" alt="Kevin 生日快樂" style="width:100%; display:block; border-radius: var(--r-card) var(--r-card) 0 0; height: clamp(180px, 40vw, 360px); object-fit: contain; object-position: center; background: #fff8f0;">
-        <div style="padding: var(--sp-md); text-align:center;">
-            <p style="font-size: var(--fs-lg); font-weight: 900; color: #db2777;">🎂 3/13 Kevin 生日快樂！</p>
-            <p style="font-size: var(--fs-sm); color: #9d174d; margin-top: 4px;">記得祝他生日快樂 🎉</p>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/02 (一) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Cranial nerves & Nuclei</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/02 (一) 03-午 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 1</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-3">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/03 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum II</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-4">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/04 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Pelvis and Perineum III</h3><p class="teacher-name text-slate-500 mt-1">陳儷友 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-5">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/05 (四) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">離體心臟解剖與臨床結構性心臟疾病的相關性</h3><p class="teacher-name text-slate-500 mt-1">蘇峻弘 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w2-6">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/05 (四) 03-午 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 2</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+            </div>
+
+            <!-- 第 3 週 -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/09 - 3/13</h2></div>
+
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/09 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 3</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/11 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Brainstem & Reticular formation</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-3">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/11 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Diencephalon & Thalamus</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w3-4">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/12 (四) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 4</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+            </div>
+
+            <!-- 第 4 週 (考週) -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🔥</span><h2 class="week-title-text font-black text-red-600">3/16 - 3/20 考週</h2></div>
+
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/16 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 5</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-1">
+                    <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">筆試</span>
+                    <h3 class="exam-title font-black text-red-800">第一次期中考</h3>
+                    <p class="exam-sub text-red-500 mt-0.5">The First Examination</p>
+                    <p class="exam-time text-red-600 mt-1 font-bold">3/17 (二) 03-04 節</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/18 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Cerebellum</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-3">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/18 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Basal ganglion</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-4">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/18 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 6</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-2">
+                    <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">跑台</span>
+                    <h3 class="exam-title font-black text-red-800">跑台考試</h3>
+                    <p class="exam-time text-red-600 mt-1 font-bold">3/19 (四) 07-08 節</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-5">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/20 (五) 01-02 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">實驗課講解</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-6">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/20 (五) 03-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">皮膚切割</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+            </div>
+
+            <!-- 第 5 週 -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/23 - 3/27</h2></div>
+
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/23 (一) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">廖智凱 老師 1</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/24 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">腹胃盆腔與會陰部醫學影像學</h3><p class="teacher-name text-slate-500 mt-1">梁耕維 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-3">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/24 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">廖智凱 老師 2</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-4">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/25 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Cerebral cortex & White matter</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-5">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/25 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">Limbic system & High cortical function</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-6">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/27 (五) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">廖智凱 老師 3</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+            </div>
+
+            <!-- 第 6 週 (考週) -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🔥</span><h2 class="week-title-text font-black text-red-600">3/30 - 4/03 考週</h2></div>
+
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/31 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
+                    <h3 class="course-name font-bold text-slate-800">中樞神經系統醫學影像學</h3><p class="teacher-name text-slate-500 mt-1">沈昭諭 老師</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/31 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">廖智凱 老師 4</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-3">
+                    <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">筆試</span>
+                    <h3 class="exam-title font-black text-red-800">第二次期中考</h3>
+                    <p class="exam-sub text-red-500 mt-0.5">The Second Examination</p>
+                    <p class="exam-time text-red-600 mt-1 font-bold">4/01 (三) 03-04 節</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
+                </div>
+            </div>
+
+            <!-- 第 7 週 (結業週) -->
+            <div class="week-slide space-y-4">
+                <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🏁</span><h2 class="week-title-text font-black text-slate-700">4/06 - 4/10 結業週</h2></div>
+
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w7-1">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/07 (二) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">廖智凱 老師 5</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w7-2">
+                    <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/09 (四) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
+                    <h3 class="course-name font-bold text-slate-800">廖智凱 老師 6</h3>
+                    <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
+                </div>
+                <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-4">
+                    <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">跑台</span>
+                    <h3 class="exam-title font-black text-red-800">期末跑台考試</h3>
+                    <p class="exam-time text-red-600 mt-1 font-bold">4/10 (五) 07-08 節</p>
+                    <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
-
-<!-- 第 4 週 (考週) -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🔥</span><h2 class="week-title-text font-black text-red-600">3/16 - 3/20 考週</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/16 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 5</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-1">
-        <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">筆試</span>
-        <h3 class="exam-title font-black text-red-800">第一次期中考</h3>
-        <p class="exam-sub text-red-500 mt-0.5">The First Examination</p>
-        <p class="exam-time text-red-600 mt-1 font-bold">3/17 (二) 03-04 節</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/18 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Cerebellum</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/18 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Basal ganglion</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-4">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/18 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">陳欽昶 老師 6</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-2">
-        <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">跑台</span>
-        <h3 class="exam-title font-black text-red-800">跑台考試</h3>
-        <p class="exam-time text-red-600 mt-1 font-bold">3/19 (四) 07-08 節</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-5">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/20 (五) 01-02 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">實驗課講解</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-6">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/20 (五) 03-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">皮膚切割</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w4-7">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/20 (五) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 1</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-</div>
-
-<!-- 第 5 週 -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🗓️</span><h2 class="week-title-text font-black text-slate-700">3/23 - 3/27</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/23 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 2</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/24 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">腹胃盆腔與會陰部醫學影像學</h3><p class="teacher-name text-slate-500 mt-1">梁耕維 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/25 (三) 01-02 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Cerebral cortex & White matter</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-4">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/25 (三) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">Limbic system & High cortical function</h3><p class="teacher-name text-slate-500 mt-1">曾啟育 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-5">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/25 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 3</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w5-6">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/26 (四) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 4</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-</div>
-
-<!-- 第 6 週 (考週) -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🔥</span><h2 class="week-title-text font-black text-red-600">3/30 - 4/03 考週</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">3/30 (一) 01-04 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 5</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-2">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-blue-600">3/31 (二) 03-04 節</span><span class="badge-lecture px-2.5 py-1 rounded-full font-bold">正課</span></div>
-        <h3 class="course-name font-bold text-slate-800">中樞神經系統醫學影像學</h3><p class="teacher-name text-slate-500 mt-1">沈昭諭 老師</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-3">
-        <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">筆試</span>
-        <h3 class="exam-title font-black text-red-800">第二次期中考</h3>
-        <p class="exam-sub text-red-500 mt-0.5">The Second Examination</p>
-        <p class="exam-time text-red-600 mt-1 font-bold">4/01 (三) 03-04 節</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
-    </div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w6-3">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/01 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 6</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-</div>
-
-<!-- 第 7 週 (結業週) -->
-<div class="week-slide space-y-4">
-    <div class="flex items-center space-x-2 pb-2"><span class="week-title-emoji">🏁</span><h2 class="week-title-text font-black text-slate-700">4/06 - 4/10 結業週</h2></div>
-    <div class="course-card bg-white rounded-3xl border border-slate-100 shadow-sm" data-id="w7-1">
-        <div class="flex justify-between items-start mb-2"><span class="date-label font-bold text-green-600">4/08 (三) 05-08 節</span><span class="badge-lab px-2.5 py-1 rounded-full font-bold">實驗</span></div>
-        <h3 class="course-name font-bold text-slate-800">朱培銘 老師 7</h3>
-        <div class="mood-selector mt-4 pt-4 border-t border-slate-50"></div>
-    </div>
-    <div class="course-card bg-red-50 rounded-3xl border border-red-100 flex flex-col items-center exam-card" data-id="exam-4">
-        <span class="badge-exam px-3 py-1 rounded-full font-bold mb-2">跑台</span>
-        <h3 class="exam-title font-black text-red-800">期末跑台考試</h3>
-        <p class="exam-time text-red-600 mt-1 font-bold">4/10 (五) 07-08 節</p>
-        <div class="mood-selector mt-4 pt-4 border-t border-red-200 w-full"></div>
-    </div>
-</div>
-</div>
-</div>
 </main>
 
 <nav id="floatingNav" class="fixed bottom-0 left-0 right-0 border-t border-slate-200 z-50" style="border-radius: clamp(20px,4vw,40px) clamp(20px,4vw,40px) 0 0; padding: var(--sp-md) var(--sp-md) clamp(24px,5vw,48px);">
@@ -434,13 +424,13 @@
             <div class="w-10 h-1 bg-slate-200 rounded-full"></div>
         </div>
         <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 8px;">
-            <button onclick="goToWeek(0,true,event)" data-week="0" class="tab-btn pill-btn bg-blue-600 text-white shadow-lg">W1</button>
-            <button onclick="goToWeek(1,true,event)" data-week="1" class="tab-btn pill-btn bg-slate-100 text-slate-500">W2</button>
-            <button onclick="goToWeek(2,true,event)" data-week="2" class="tab-btn pill-btn bg-slate-100 text-slate-500">W3</button>
-            <button onclick="goToWeek(3,true,event)" data-week="3" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W4</button>
-            <button onclick="goToWeek(4,true,event)" data-week="4" class="tab-btn pill-btn bg-slate-100 text-slate-500">W5</button>
-            <button onclick="goToWeek(5,true,event)" data-week="5" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W6</button>
-            <button onclick="goToWeek(6,true,event)" data-week="6" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W7</button>
+            <button onclick="goToWeek(0,event)" data-week="0" class="tab-btn pill-btn bg-blue-600 text-white shadow-lg">W1</button>
+            <button onclick="goToWeek(1,event)" data-week="1" class="tab-btn pill-btn bg-slate-100 text-slate-500">W2</button>
+            <button onclick="goToWeek(2,event)" data-week="2" class="tab-btn pill-btn bg-slate-100 text-slate-500">W3</button>
+            <button onclick="goToWeek(3,event)" data-week="3" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W4</button>
+            <button onclick="goToWeek(4,event)" data-week="4" class="tab-btn pill-btn bg-slate-100 text-slate-500">W5</button>
+            <button onclick="goToWeek(5,event)" data-week="5" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W6</button>
+            <button onclick="goToWeek(6,event)" data-week="6" class="tab-btn pill-btn" style="background-color:#fce7f3;color:#9d174d;">W7</button>
         </div>
     </div>
 </nav>
@@ -465,13 +455,6 @@
     const swipeContainer = document.getElementById('swipeContainer');
     let currentWeek = 0;
 
-    // iOS standalone vh fix
-    function setVh() {
-        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    }
-    setVh();
-    window.addEventListener('resize', setVh);
-
     window.onload = () => { renderAllMoodSelectors(); loadMoods(); initSwipe(); };
 
     function renderAllMoodSelectors() {
@@ -489,11 +472,9 @@
     }
 
     function initSwipe() {
-        const main = document.querySelector('main');
         let touchStartX = 0, touchStartY = 0, dragX = 0;
         let swipeDirection = null;
 
-        // Attach touch to each slide so vertical scroll works naturally per slide
         function attachSlideSwipe(slide) {
             slide.addEventListener('touchstart', (e) => {
                 touchStartX = e.touches[0].clientX;
@@ -517,16 +498,16 @@
                     const base = -currentWeek * (100 / 7);
                     swipeContainer.style.transform = `translateX(calc(${base}% + ${dx}px))`;
                 }
-                // if 'v', do nothing - let the slide's own overflow-y scroll naturally
+                // vertical: let the slide's own overflow-y handle it naturally
             }, { passive: false });
 
             slide.addEventListener('touchend', () => {
                 swipeContainer.style.transition = '';
                 if (swipeDirection === 'h') {
                     const threshold = window.innerWidth * 0.25;
-                    if (dragX < -threshold && currentWeek < 6) goToWeek(currentWeek + 1, true);
-                    else if (dragX > threshold && currentWeek > 0) goToWeek(currentWeek - 1, true);
-                    else goToWeek(currentWeek, false);
+                    if (dragX < -threshold && currentWeek < 6) goToWeek(currentWeek + 1);
+                    else if (dragX > threshold && currentWeek > 0) goToWeek(currentWeek - 1);
+                    else goToWeek(currentWeek);
                 }
                 dragX = 0;
                 swipeDirection = null;
@@ -536,6 +517,7 @@
         document.querySelectorAll('.week-slide').forEach(attachSlideSwipe);
 
         // Desktop mouse swipe on main
+        const main = document.querySelector('main');
         let mouseStartX = 0, mouseDown = false, wasDragging = false;
         main.addEventListener('mousedown', (e) => { mouseStartX = e.clientX; mouseDown = true; wasDragging = false; swipeContainer.style.transition = 'none'; });
         main.addEventListener('mousemove', (e) => {
@@ -551,15 +533,15 @@
             swipeContainer.style.transition = '';
             const dx = e.clientX - mouseStartX;
             const threshold = window.innerWidth * 0.15;
-            if (dx < -threshold && currentWeek < 6) goToWeek(currentWeek + 1, true);
-            else if (dx > threshold && currentWeek > 0) goToWeek(currentWeek - 1, true);
-            else goToWeek(currentWeek, false);
+            if (dx < -threshold && currentWeek < 6) goToWeek(currentWeek + 1);
+            else if (dx > threshold && currentWeek > 0) goToWeek(currentWeek - 1);
+            else goToWeek(currentWeek);
         });
-        main.addEventListener('mouseleave', () => { if (mouseDown) { mouseDown = false; swipeContainer.style.transition = ''; goToWeek(currentWeek, false); } });
+        main.addEventListener('mouseleave', () => { if (mouseDown) { mouseDown = false; swipeContainer.style.transition = ''; goToWeek(currentWeek); } });
         main.addEventListener('click', (e) => { if (wasDragging) { e.stopPropagation(); wasDragging = false; } });
     }
 
-    function goToWeek(idx, scrollToTop = true, e) {
+    function goToWeek(idx, e) {
         if (e) e.stopPropagation();
         currentWeek = idx;
 
@@ -585,10 +567,10 @@
             }
         });
 
-        if (scrollToTop) {
-            const activeSlide = document.querySelectorAll('.week-slide')[idx];
-            if (activeSlide) activeSlide.scrollTop = 0;
-        }
+        // Scroll active slide back to top
+        const activeSlide = document.querySelectorAll('.week-slide')[idx];
+        if (activeSlide) activeSlide.scrollTop = 0;
+
         nav.classList.remove('show');
     }
 
@@ -619,12 +601,12 @@
     }
 </script>
 
-    <script>
-      if ('serviceWorker' in navigator) {
+<script>
+    if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/anatomy-schedule/sw.js', {scope: '/anatomy-schedule/'});
+            navigator.serviceWorker.register('/anatomy-schedule/sw.js', {scope: '/anatomy-schedule/'});
         });
-      }
-    </script>
+    }
+</script>
 </body>
 </html>
